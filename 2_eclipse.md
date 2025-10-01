@@ -346,3 +346,131 @@ Si ya existe un proyecto creado en otro workspace o en otra carpeta:
 
 ---
 
+## **10. Mi primer programa en Java**
+
+```java
+package tema2_Eclipse;
+
+public class MyFirstProgramme {
+
+    public static void main(String[] args) {
+        System.out.println("¡Mi primer programa!");
+    }
+
+}
+```
+
+Este programa muestra por pantalla el texto **¡Mi primer programa!**.
+
+### Explicación del código:
+
+* `public class MyFirstProgramme`: declara la clase pública llamada `MyFirstProgramme`.
+  ⚠️ El nombre del archivo debe coincidir exactamente con el de la clase (`MyFirstProgramme.java`).
+* `public static void main(String[] args)`: es el **método principal**. Todo programa en Java comienza su ejecución en el `main`.
+* `System.out.println("¡Mi primer programa!");`: instrucción que escribe un texto en pantalla. Como se trata de una cadena, debe ir entre comillas.
+
+👉 En Eclipse existen **plantillas de código** que facilitan escribir instrucciones repetitivas. La más común es:
+
+* Escribir `sysout` → pulsar `Ctrl + Espacio` → Eclipse lo reemplaza por `System.out.println();`.
+  Además de `sysout`, existen muchas otras plantillas e incluso se pueden crear nuevas.
+
+---
+
+## **11. Cambiar el nombre a los elementos de Java**
+
+Al renombrar manualmente una clase, método o variable, podemos romper el programa si ese nombre aparece en varios lugares. Para evitarlo, Eclipse ofrece la herramienta de **refactorización**:
+
+* Seleccionar el elemento (clase, variable, método, etc.).
+* Botón derecho → `Refactor → Rename` (o pulsar **Alt+Shift+R**).
+* Eclipse cambiará el nombre automáticamente en todos los sitios donde se use.
+
+👉 Si se trata de una **clase**, también se renombra el archivo `.java` correspondiente y viceversa.
+
+---
+
+## **12. Escritura de programas en Java**
+
+Al escribir programas en Java hay que tener en cuenta:
+
+* Los archivos de código fuente terminan en `.java`.
+* Java distingue entre **mayúsculas y minúsculas** (`Variable` ≠ `variable`).
+* Cada instrucción debe terminar con `;`.
+* Una instrucción puede ocupar varias líneas, y es válido usar espacios o tabuladores para mejorar la legibilidad.
+
+### Comentarios en Java:
+
+Los comentarios son anotaciones ignoradas por el compilador y sirven para explicar el código:
+
+* **Una sola línea:**
+
+  ```java
+  // Comentario de una línea
+  ```
+* **Varias líneas:**
+
+  ```java
+  /* Comentario
+     de varias líneas */
+  ```
+
+👉 Los comentarios deben aportar claridad, sobre todo en código complejo. La legibilidad es clave para el mantenimiento de una aplicación.
+
+---
+
+## **13. Comentarios en Eclipse**
+
+Algunas configuraciones útiles:
+
+* Cuando se crea una clase, Eclipse genera un comentario por defecto. Esto se configura en:
+  `Window → Preferences → Java → Code Style → Code Templates → Code → Method Body → Edit`.
+* Para desactivar la corrección ortográfica en los comentarios (que a veces subraya palabras técnicas):
+  `Window → Preferences → General → Editors → Text Editors → Spelling → deshabilitar "Enable Spell Checking"`.
+* Para comentar o descomentar rápidamente un bloque de código:
+
+  * Seleccionarlo y pulsar **Ctrl + Shift + C** o **Ctrl + 7**.
+
+---
+
+## **14. Dar formato al código**
+
+En Java, el código se organiza en **bloques** delimitados por llaves `{ ... }`. Para mejorar la legibilidad se utiliza la **indentación** (sangrado), moviendo el código hacia la derecha dentro de cada bloque.
+
+Ejemplo sin formatear:
+
+```java
+public static void main(String[] args) {
+        int x=3;
+    System.out.print("Este código no está");
+System.out.print(" muy bien ");
+            System.out.print("tabulado");
+  x=7;
+}
+```
+
+Ejemplo formateado automáticamente en Eclipse:
+
+```java
+public static void main(String[] args) {
+    int x = 3;
+    System.out.print("Este código no está");
+    System.out.print(" muy bien ");
+    System.out.print("tabulado");
+    x = 7;
+}
+```
+
+### Cómo dar formato al código en Eclipse:
+
+* Pulsar **Ctrl + Shift + F**.
+* O bien: `Menú Source → Format` o `Botón derecho → Source → Format`.
+
+Además, Eclipse permite configurar el estilo de formateo:
+
+* `Window → Preferences → Java → Code Style → Formatter`.
+* Crear un nuevo perfil y editar opciones como:
+
+  * Desactivar *Enable block comment formatting* (para que no toque los comentarios de varias líneas).
+  * Desactivar *Enable line comment formatting* (para que no toque los comentarios de una sola línea).
+
+---
+
