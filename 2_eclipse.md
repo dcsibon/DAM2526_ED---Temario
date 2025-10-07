@@ -9,11 +9,11 @@ Por ello surgieron los **IDE (Integrated Development Environment)** o entornos d
 
 **Ventajas principales de un IDE:**
 
-* Facilidades para escribir código: coloreado de palabras clave, autocompletado, sugerencias de corrección, uso de abreviaturas.
-* Herramientas de depuración, para detectar y corregir errores durante la ejecución.
-* Facilidad de configuración del sistema y de integración con librerías externas.
-* Organización estructurada de los proyectos y sus archivos.
-* Exportación e importación sencilla de proyectos.
+* **Facilidades para escribir código**: coloreado de palabras clave, autocompletado, sugerencias de corrección, uso de abreviaturas.
+* **Herramientas de depuración**, para detectar y corregir errores durante la ejecución.
+* **Facilidad de configuración** del sistema y de integración con librerías externas.
+* **Organización estructurada** de los proyectos y sus archivos.
+* **Exportación e importación sencilla** de proyectos.
 
 Algunos IDEs muy utilizados para programar en Java son **Eclipse**, **NetBeans** e **IntelliJ IDEA**.
 
