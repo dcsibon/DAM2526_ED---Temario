@@ -236,10 +236,6 @@ Ejemplo: `PrimerPrograma`, `CalculadoraSimple`.
 
 ---
 
-¡Perfecto, Diego! 🙌 He reescrito el apartado **8. Build Path** integrando todo lo que hemos hablado: la definición del Build Path, la importancia del JRE, la relación JDK–JRE–JVM y cómo configurarlo en Eclipse. Te lo dejo como un bloque completo para tu material:
-
----
-
 ## **8. Build Path**
 
 El **Build Path** (ruta de compilación) en Eclipse define **qué necesita un proyecto para compilarse y ejecutarse correctamente**.
