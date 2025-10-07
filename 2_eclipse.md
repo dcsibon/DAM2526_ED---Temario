@@ -154,15 +154,33 @@ Cuando se crea un proyecto Java en Eclipse, este se guarda en el **workspace** y
 
 ### Paquetes
 
-Los **paquetes** permiten organizar las clases dentro de la carpeta `src`.
+Los **paquetes** (*packages*) permiten **organizar las clases** dentro de la carpeta `src` de un proyecto Java.
 
 * Un paquete se corresponde con una **subcarpeta** en `src`.
 * Dentro de cada clase Java se debe indicar al inicio el paquete al que pertenece con la palabra clave `package`.
+* El nombre de un paquete suele seguir una **estructura jerárquica** que identifica la procedencia del código *(por ejemplo, el país, el centro educativo, el módulo y el tema)*.
 
 Ejemplo con clase en un paquete:
 
+#### Estructura en Eclipse
+
+Cuando se crea un paquete, Eclipse genera automáticamente la carpeta correspondiente en el sistema de archivos.
+Por ejemplo, el paquete:
+
+```
+es.iessaladillo.dam1.ed.u1
+```
+
+corresponde a la ruta:
+
+```
+src/es/iessaladillo/dam1/ed/u1/
+```
+
+**Ejemplo con clase en un paquete:**
+
 ```java
-package tema1_1_IntroduccionAlLenguajeJava; // Especificación del paquete
+package es.iessaladillo.dam1.ed.u1; // Especificación del paquete
 
 public class Integers {
     public static void main(String[] args) {
@@ -171,7 +189,10 @@ public class Integers {
 }
 ```
 
-Si la clase está en el **paquete por defecto** (`default package`), se guarda directamente en `src` y no aparece ninguna declaración `package` en el código:
+#### Paquete por defecto (default package)
+
+Si la clase se guarda directamente en `src` sin indicar ningún paquete, se dice que pertenece al **paquete por defecto** (*default package*).
+En este caso, el archivo no lleva ninguna declaración `package` al inicio:
 
 ```java
 // Clase en el default package
@@ -182,7 +203,23 @@ public class Integers {
 }
 ```
 
-👉 Aunque Eclipse permite el default package, **no se recomienda** en proyectos grandes porque dificulta la organización.
+👉 Aunque Eclipse permite usar el *default package*, **no se recomienda en proyectos grandes** porque **dificulta la organización y la importación de clases** desde otros paquetes.
+
+#### Recomendación práctica (para clase)
+
+En el IES Saladillo, los paquetes pueden seguir esta convención:
+
+```
+es.iessaladillo.dam1.ed.uX
+```
+
+donde:
+
+* `es` → país (España)
+* `iessaladillo` → centro educativo
+* `dam1` → ciclo y curso
+* `ed` → módulo *Entornos de Desarrollo*
+* `uX` → número de unidad o tema (por ejemplo, `u1`, `u2`, etc.)
 
 ---
 
