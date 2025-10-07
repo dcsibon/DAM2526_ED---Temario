@@ -470,3 +470,171 @@ Además, Eclipse permite configurar el estilo de formateo:
 
 ---
 
+## **15. Ejecución de programas en Java**
+
+Solo se pueden ejecutar los programas que contienen el método principal:
+
+```java
+public static void main(String[] args)
+```
+
+Este método es el punto de entrada de toda aplicación Java.
+
+Una de las ventajas de Eclipse es que permite ejecutar el programa **sin salir del entorno**. Hay varias formas de hacerlo:
+
+* En el **Package Explorer**:
+  Seleccionar el archivo `.java` → Botón derecho → `Run As → Java Application`.
+
+* Desde la **barra de herramientas**:
+  Pulsar en el icono ▶️ (triángulo blanco).
+  Si el programa ya se ejecutó antes, bastará con hacer clic directamente en ese botón.
+  Si no, abrir el menú desplegable (triángulo negro) y elegir `Run As → Java Application`.
+
+El resultado aparecerá en la **vista Consola**, normalmente en la parte inferior del entorno.
+Ahí se muestran los mensajes generados por `System.out.println()` o por la JVM.
+
+**Personalización de la consola:**
+Para cambiar el tamaño o la fuente:
+
+```
+Window → Preferences → General → Appearance → Colors and Fonts → Debug → Console Font
+```
+
+> 💡 Consejo: si no ves la consola, puedes abrirla desde
+> `Window → Show View → Console`.
+
+---
+
+## **16. Errores**
+
+Una de las mayores ventajas de Eclipse es su **compilación incremental**, que analiza el código en tiempo real.
+Los errores aparecen a medida que se escribe, igual que un corrector ortográfico.
+
+Eclipse diferencia entre:
+
+| Tipo                      | Símbolo                 | Color    | Significado                                                              |
+| ------------------------- | ----------------------- | -------- | ------------------------------------------------------------------------ |
+| **Error**                 | ❌ (X roja)              | Rojo     | Impide compilar el programa.                                             |
+| **Advertencia (Warning)** | ⚠️ (triángulo amarillo) | Amarillo | No detiene la compilación, pero señala algo potencialmente problemático. |
+
+Si un proyecto tiene errores:
+
+* En el **Package Explorer**, el proyecto mostrará una **X roja**.
+* Si solo tiene advertencias, aparecerá un **triángulo amarillo**.
+* En el código fuente, se marcan en el margen izquierdo junto con una **bombilla 💡**, que sugiere correcciones automáticas.
+
+---
+
+### 🧩 Ejemplo de advertencia
+
+```java
+public static void main(String[] args) {
+    int x = 3; // The value of the local variable x is not used
+    x = 7;  
+}
+```
+
+🔸 Eclipse avisa porque `x` se declara pero nunca se usa.
+
+---
+
+### 🧨 Ejemplo de error de compilación
+
+```java
+public static void main(String[] args) {
+    int x = 3;
+    y = 7; // y cannot be resolved to a variable
+}
+```
+
+🔹 La variable `y` no está declarada, por lo que el compilador no puede continuar.
+
+---
+
+### ⚙️ Errores de ejecución (Runtime errors)
+
+Cuando no hay errores de compilación, el programa puede ejecutarse, pero aún pueden surgir **errores en tiempo de ejecución** que detienen la ejecución del código.
+
+Ejemplo:
+
+```java
+public class EjemploErrorEjecucion {
+    public static void main(String[] args) {        
+        System.out.println(5 / 0);
+    }
+}
+```
+
+Salida en la consola:
+
+```
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+    at EjemploErrorEjecucion.main(EjemploErrorEjecucion.java:6)
+```
+
+**Interpretación:**
+
+* Tipo de error: `ArithmeticException`
+* Causa: `/ by zero` (división entre 0)
+* Localización: archivo `EjemploErrorEjecucion.java`, línea 6
+
+---
+
+## **17. Ayudas al escribir código**
+
+Eclipse incluye múltiples herramientas de asistencia que hacen más eficiente la escritura.
+
+---
+
+### **17.1 Esquema flotante (Quick Outline)**
+
+Permite ver un resumen de todos los métodos, atributos y estructuras de una clase, facilitando la navegación dentro del código.
+
+* Menú: `Navigate → Quick Outline`
+* Atajo: **Ctrl + O**
+
+> Ideal para clases largas: permite saltar rápidamente a cualquier método con doble clic.
+
+---
+
+### **17.2 Asistente de contenido (Content Assist)**
+
+Ayuda a escribir código más rápido y con menos errores.
+
+* Atajo: **Ctrl + Espacio**
+* Funciona mientras se escribe, mostrando sugerencias de:
+
+  * Métodos, variables y clases disponibles.
+  * Plantillas de código (ver siguiente punto).
+
+Ejemplo:
+
+1. Escribir `sy`
+2. Pulsar **Ctrl + Espacio**
+3. Aparece una lista de sugerencias → elegir `System`
+4. Escribir `.` → aparecen los miembros de `System`
+5. Elegir `out`
+6. Escribir `.` → aparecen los métodos → elegir `println`
+
+> 💡 Consejo: si el Content Assist no aparece, revisar en
+> `Window → Preferences → Java → Editor → Content Assist`.
+
+---
+
+### **17.3 Plantillas de código (Code Templates)**
+
+Las plantillas sustituyen abreviaturas por fragmentos completos de código.
+
+* Ejemplo clásico:
+  Escribir `sysout` → **Ctrl + Espacio**
+  Eclipse inserta automáticamente:
+
+  ```java
+  System.out.println();
+  ```
+
+* Existen muchas más (`main`, `for`, `while`, etc.), y se pueden crear nuevas desde:
+  `Window → Preferences → Java → Editor → Templates`
+
+---
+
