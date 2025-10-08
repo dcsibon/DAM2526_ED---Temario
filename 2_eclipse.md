@@ -675,3 +675,232 @@ Las plantillas sustituyen abreviaturas por fragmentos completos de código.
 
 ---
 
+## **18. Modificar las preferencias del editor**
+
+Eclipse permite modificar casi cualquier aspecto del editor de código Java, desde su comportamiento hasta su apariencia.
+Estas configuraciones se gestionan desde:
+
+```
+Window → Preferences → Java → Editor
+```
+
+Desde este menú se accede a numerosos apartados, que detallamos a continuación:
+
+---
+
+### **18.1 Opciones generales**
+
+En `Java → Editor` encontramos ajustes básicos del editor.
+
+* **Report problems as you type**:
+  Activa la comprobación en tiempo real del código (muestra subrayados rojos o amarillos).
+  🔹 Conviene mantenerla activada, pues evita esperar a compilar para detectar errores.
+
+* **Bracket highlighting → Matching bracket**:
+  Permite que, al seleccionar una llave `{`, paréntesis `()` o corchete `[]`, Eclipse resalte su pareja correspondiente.
+  Esto ayuda a identificar fácilmente dónde empieza y termina cada bloque de código.
+
+> 💡 *Tip docente*: es una función muy útil cuando los alumnos se pierden entre llaves o paréntesis mal cerrados.
+
+---
+
+### **18.2 Realizar acciones al guardar (Save Actions)**
+
+Eclipse puede realizar acciones automáticas cada vez que guardamos un archivo (`Ctrl + S`).
+Esto se configura en:
+
+```
+Window → Preferences → Java → Editor → Save Actions
+```
+
+Opciones más interesantes:
+
+* **Format source code**: formatea automáticamente el código con sangrías correctas.
+* **Organize imports**: añade o elimina automáticamente las sentencias `import`.
+
+  * Si se importan varios elementos del mismo paquete, Eclipse puede agruparlos usando `*`.
+  * El número mínimo de importaciones necesarias para sustituir por `*` se configura en:
+    `Window → Preferences → Java → Code Style → Organize Imports`.
+
+> 🔹 Ejemplo:
+>
+> ```java
+> import static tema1_3_EscrituraEnPantalla.colores.Colors.*;
+> ```
+
+---
+
+### **18.3 Asistente de contenido (Content Assist)**
+
+Configurable en:
+
+```
+Window → Preferences → Java → Editor → Content Assist
+```
+
+Funciones más importantes:
+
+* **Hide forbidden references**: oculta en la ayuda elementos obsoletos o prohibidos.
+* **Auto activation delay**: tiempo de espera (en milisegundos) para mostrar sugerencias.
+
+  * Recomendado: `0` para que aparezcan al instante.
+* **Auto activation triggers for Java**: define los caracteres que activan el autocompletado.
+
+  * Por defecto, el punto (`.`).
+  * Ejemplo: al escribir `System.` se despliega la lista de miembros (`out`, `err`, `in`, etc.).
+* **Auto activation triggers for Javadoc**: por defecto `@`.
+
+  * Al escribir `@` en un comentario Javadoc, aparecen etiquetas sugeridas como `@param`, `@return`, `@author`.
+
+---
+
+### **18.4 Coloreado de la sintaxis (Syntax Coloring)**
+
+Permite personalizar el color y estilo de cada elemento del lenguaje: palabras clave, comentarios, literales, etc.
+Ruta:
+
+```
+Window → Preferences → Java → Editor → Syntax Coloring
+```
+
+> 💡 *Recomendación*: usar un esquema de colores con buen contraste (especialmente en el tema oscuro) para evitar confusión entre comentarios y código activo.
+
+---
+
+### **18.5 Marcar apariciones (Mark Occurrences)**
+
+Funcionalidad muy útil que resalta todas las apariciones de una variable, método o clase cuando el cursor se sitúa sobre su nombre.
+Activa o desactiva esta opción en:
+
+```
+Window → Preferences → Java → Editor → Mark Occurrences
+```
+
+Por defecto, el color de resaltado es **gris claro**, pero se puede personalizar.
+Facilita enormemente la depuración y comprensión del código.
+
+> 🔹 Muy recomendable mantenerlo activado, salvo en equipos con bajo rendimiento.
+
+---
+
+### **18.6 Apartado tecleo (Typing)**
+
+Ubicación:
+
+```
+Window → Preferences → Java → Editor → Typing
+```
+
+Aquí se definen ayudas automáticas mientras escribimos código:
+
+* **Auto close**:
+  Cierra automáticamente comillas, paréntesis, llaves y corchetes.
+  Evita errores comunes de sintaxis.
+
+* **Auto insert semicolons and braces**:
+  Inserta automáticamente `;` o `{}`.
+  🔸 No se recomienda activar el de `;`, ya que Eclipse no siempre determina su posición correcta.
+
+* **Indentation on Enter**:
+  Ajusta automáticamente la sangría al pulsar `Enter`.
+
+Ejemplo:
+
+```java
+if (a < 8) {   // Al pulsar Enter:
+    // Cursor se coloca aquí si la opción está activada
+// Aquí si está desactivada
+}
+```
+
+Además, Eclipse puede **reajustar la indentación y los imports al pegar código**.
+
+---
+
+### **18.7 Plantillas (Templates)**
+
+Las plantillas convierten abreviaturas en fragmentos completos de código.
+Ruta:
+
+```
+Window → Preferences → Java → Editor → Templates
+```
+
+Ejemplo clásico:
+
+* Escribir `sysout` → **Ctrl + Espacio**
+  Eclipse inserta automáticamente:
+
+  ```java
+  System.out.println();
+  ```
+
+Cada plantilla puede incluir **variables** entre `${}` que se sustituyen según el contexto:
+
+| Variable            | Descripción                                           |
+| ------------------- | ----------------------------------------------------- |
+| `${word_selection}` | Texto seleccionado actualmente.                       |
+| `${}`               | Espacio vacío editable.                               |
+| `${cursor}`         | Posición final del cursor tras insertar la plantilla. |
+
+📘 **Ejemplo explicado:**
+Plantilla por defecto `sysout` equivale a:
+
+```java
+System.out.println(${word_selection}${});${cursor}
+```
+
+* Si hay texto seleccionado, lo incluye dentro del `println`.
+* El cursor queda entre paréntesis para escribir más texto.
+* Al pulsar *Tab*, salta a la posición final.
+
+También se pueden **crear, exportar o importar** plantillas personalizadas para mantener las mismas configuraciones entre equipos.
+
+---
+
+### **18.8 Estilo del código (Code Style)**
+
+Ubicación:
+
+```
+Window → Preferences → Java → Code Style
+```
+
+Opciones destacadas:
+
+* **Use ‘is’ prefix for boolean getters**:
+  Hace que los métodos que devuelven `boolean` empiecen con `is` (por ejemplo, `isVisible()`).
+
+* **Add @Override annotation**:
+  Añade automáticamente la anotación `@Override` al sobrescribir métodos.
+  Esto ayuda al compilador a detectar errores si el método no existe en la superclase.
+
+* **Exception variable name**:
+  Define el nombre por defecto de las variables `catch`, normalmente `e`.
+
+> 💡 *Ejemplo práctico*:
+>
+> ```java
+> try {
+>     int x = 5 / 0;
+> } catch (ArithmeticException e) {
+>     System.out.println("Error: " + e.getMessage());
+> }
+> ```
+
+---
+
+✅ **Resumen del apartado 18**
+
+| Área                 | Qué permite configurar                              |
+| -------------------- | --------------------------------------------------- |
+| **General**          | Errores en tiempo real y resaltado de llaves        |
+| **Save Actions**     | Formato y organización automática del código        |
+| **Content Assist**   | Sugerencias inteligentes y autocompletado           |
+| **Syntax Coloring**  | Colores y estilos de sintaxis                       |
+| **Mark Occurrences** | Resalta todas las apariciones de un elemento        |
+| **Typing**           | Cierre automático de símbolos y sangría             |
+| **Templates**        | Creación y gestión de plantillas de código          |
+| **Code Style**       | Reglas de estilo, anotaciones y nombres por defecto |
+
+---
