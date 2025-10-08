@@ -904,3 +904,222 @@ Opciones destacadas:
 | **Code Style**       | Reglas de estilo, anotaciones y nombres por defecto |
 
 ---
+
+## **19. Depuración**
+
+La **depuración (debug)** es una herramienta fundamental que permite ejecutar un programa paso a paso, observar el valor de las variables en cada momento y detectar fácilmente los errores lógicos o de ejecución.
+
+---
+
+### **Paso 1. Colocar los breakpoints (puntos de interrupción)**
+
+Un **breakpoint** indica la línea de código donde el programa se detendrá durante la ejecución.
+En ese punto podrás **analizar el contenido de las variables, ejecutar paso a paso** o incluso **modificar valores**.
+
+* Para colocar un breakpoint: haz **doble clic** en el margen izquierdo del editor (junto al número de línea).
+  Aparecerá un **círculo azul** indicando el punto de parada.
+* Para eliminarlo, vuelve a hacer doble clic o usa:
+  `Botón derecho → Toggle Breakpoint`.
+
+> 💡 Consejo: usa breakpoints en las zonas donde sospeches un error o quieras comprobar cómo cambia el valor de una variable.
+
+---
+
+### **Paso 2. Abrir la perspectiva Debug**
+
+Para visualizar correctamente las herramientas de depuración, abre la **perspectiva Debug**:
+
+```
+Window → Perspective → Open Perspective → Debug
+```
+
+También se puede acceder desde los **iconos de perspectivas** en la esquina superior derecha del entorno.
+
+Esta perspectiva incluye varias **vistas importantes**:
+
+---
+
+#### 🧭 **Vista Debug**
+
+Muestra los programas que están en ejecución o ya han finalizado.
+Puedes eliminar ejecuciones antiguas con:
+
+* `Remove Launch` (borra la seleccionada)
+* `Remove All Terminated Launches` (borra todas las terminadas)
+
+---
+
+#### 🔍 **Vista Variables**
+
+Aquí se muestra cada variable, su tipo y su valor actual.
+También puedes:
+
+* Colocar el ratón sobre una variable para ver su valor.
+* Editar un valor directamente durante la depuración.
+* Activar **Show Logical Structure** para ver el contenido interno de estructuras (listas, mapas, arrays...).
+
+---
+
+#### 🎯 **Vista Breakpoints**
+
+Lista todos los puntos de interrupción del proyecto.
+Desde aquí puedes:
+
+* Activar/desactivar breakpoints sin borrarlos.
+* Configurar condiciones o contadores (*Hit count*).
+* Borrar todos los breakpoints con un clic.
+
+---
+
+#### 🧮 **Vista Expressions**
+
+Permite **añadir expresiones o variables** para evaluarlas durante la depuración.
+Ejemplo: añadir `i % 3` para ver cómo cambia en cada iteración del bucle.
+
+---
+
+### **Paso 3. Empezar a depurar**
+
+Para iniciar la depuración:
+
+* Haz clic en el icono del **bicho verde 🐞 (Debug)** junto al botón de *Run*.
+* Si Eclipse pregunta si quieres cambiar a la perspectiva Debug, acepta y marca
+  “Remember my decision”.
+
+Si la aplicación no comienza, abre el menú del triángulo negro junto al icono y elige
+`Debug As → Java Application`.
+
+El programa se detendrá en el primer breakpoint, y la línea activa aparecerá **resaltada en verde**.
+
+---
+
+### **Controles básicos del depurador**
+
+| Opción                      | Tecla | Descripción                                    |
+| --------------------------- | ----- | ---------------------------------------------- |
+| ▶️ **Resume**               | F8    | Continúa hasta el siguiente breakpoint.        |
+| ⏹ **Terminate**             | —     | Detiene completamente la ejecución.            |
+| ↪️ **Step Over**            | F6    | Ejecuta la línea actual sin entrar en métodos. |
+| ↘️ **Step Into**            | F5    | Entra dentro del método llamado en esa línea.  |
+| ↩️ **Step Return**          | F7    | Termina el método actual y vuelve al anterior. |
+| 🚫 **Skip All Breakpoints** | —     | Desactiva temporalmente todos los breakpoints. |
+
+---
+
+### **Configuración avanzada de Breakpoints**
+
+* **Hit Count**: se detiene solo cuando el breakpoint se ha ejecutado *n* veces.
+* **Conditional**: se detiene solo si se cumple una condición lógica (`x == 0`, `i % 10 == 0`, etc.).
+* **Suspend when value changes**: pausa la ejecución cuando cambia el valor de una variable.
+
+> 💡 Ejemplo: detenerse cuando `x` cambia de valor en un bucle `for`.
+
+---
+
+### **Formateador de detalles (Detail Formatter)**
+
+Permite personalizar la forma en que Eclipse muestra los valores de los objetos.
+Ruta:
+
+```
+Window → Preferences → Java → Debug → Detail Formatters
+```
+
+Ejemplo:
+
+Para la clase `Vehicle`, puedes mostrar su información formateada así:
+
+```java
+"Número de ruedas: " + wheelCount + 
+"\nVelocidad: " + speed +
+"\nColor: " + colour;
+```
+
+Activando esta opción, cuando inspecciones un objeto `Vehicle`, Eclipse mostrará directamente sus valores de forma legible.
+
+---
+
+✅ **Resumen de depuración**
+
+* La depuración permite ejecutar el programa paso a paso.
+* Se detiene donde hay *breakpoints*.
+* Permite inspeccionar y modificar variables.
+* Facilita detectar errores lógicos o de ejecución.
+
+---
+
+## **20. Creación de una librería `.jar`**
+
+Una **librería JAR** (Java ARchive) es un archivo comprimido que agrupa **clases compiladas (`.class`)**, **recursos** y **metadatos**.
+Sirve para **reutilizar y distribuir código Java** de manera organizada y portable.
+
+---
+
+### **¿Qué contiene un archivo `.jar`?**
+
+* Clases Java compiladas (`.class`)
+* Archivos de configuración (`.properties`, `.xml`, etc.)
+* Recursos (imágenes, sonidos, textos…)
+* Un fichero `MANIFEST.MF` que describe el contenido del JAR.
+
+---
+
+### **Ventajas**
+
+* ✅ Facilita la **reutilización de código** (por ejemplo, utilidades o librerías propias).
+* ✅ Mejora la **modularidad** y **mantenibilidad**.
+* ✅ Simplifica la **distribución de proyectos** Java.
+* ✅ Puede integrarse fácilmente en otros proyectos.
+
+---
+
+### **Cómo crear una librería `.jar` en Eclipse**
+
+1. Selecciona el proyecto en el **Package Explorer**.
+2. Botón derecho → `Export`.
+3. En el asistente:
+   `Java → JAR file` → **Next**.
+4. Marca las clases o paquetes que quieras incluir.
+5. Indica la **carpeta destino** donde se guardará el `.jar`.
+6. Pulsa **Finish**.
+
+Se generará un archivo `.jar` con las clases compiladas.
+
+---
+
+### **Cómo usar una librería `.jar` en otro proyecto**
+
+1. Selecciona el proyecto destino.
+2. Botón derecho → `Build Path → Configure Build Path`.
+3. En la pestaña **Libraries**, selecciona el tipo de incorporación:
+
+* **Add JARs** → si la librería está dentro del *workspace*.
+* **Add External JARs** → si está fuera del *workspace* (por ejemplo, en tu escritorio o carpeta compartida).
+
+4. Pulsa **Apply and Close**.
+
+A partir de ese momento, las clases del `.jar` estarán disponibles en el proyecto.
+
+---
+
+### **Relación con Maven y Gradle**
+
+En proyectos más avanzados, el manejo de librerías JAR se automatiza con **Maven** o **Gradle**, herramientas que:
+
+* Descargan las dependencias automáticamente.
+* Evitan conflictos de versiones.
+* Generan `.jar` o `.war` al compilar.
+
+---
+
+✅ **Resumen**
+
+| Concepto             | Descripción                                           |
+| -------------------- | ----------------------------------------------------- |
+| `.jar`               | Archivo que agrupa clases compiladas y recursos.      |
+| **Ventajas**         | Reutilización, modularidad y distribución del código. |
+| **Crear JAR**        | Exportar proyecto desde Eclipse.                      |
+| **Usar JAR**         | Añadirlo al *Build Path*.                             |
+| **Gestión avanzada** | Maven y Gradle automatizan dependencias.              |
+
+---
