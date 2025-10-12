@@ -694,13 +694,12 @@ En `Java → Editor` encontramos ajustes básicos del editor.
 
 * **Report problems as you type**:
   Activa la comprobación en tiempo real del código (muestra subrayados rojos o amarillos).
-  🔹 Conviene mantenerla activada, pues evita esperar a compilar para detectar errores.
-
+  
 * **Bracket highlighting → Matching bracket**:
   Permite que, al seleccionar una llave `{`, paréntesis `()` o corchete `[]`, Eclipse resalte su pareja correspondiente.
   Esto ayuda a identificar fácilmente dónde empieza y termina cada bloque de código.
 
-> 💡 *Tip docente*: es una función muy útil cuando los alumnos se pierden entre llaves o paréntesis mal cerrados.
+> 💡 *Consejo*: estas funciones son muy útiles, la primera evita esperar a compilar para detectar errores y la segunda evita que nos perdamos entre llaves o paréntesis mal cerrados.
 
 ---
 
@@ -725,7 +724,7 @@ Opciones más interesantes:
 > 🔹 Ejemplo:
 >
 > ```java
-> import static tema1_3_EscrituraEnPantalla.colores.Colors.*;
+> import java.util.*;
 > ```
 
 ---
@@ -741,13 +740,16 @@ Window → Preferences → Java → Editor → Content Assist
 Funciones más importantes:
 
 * **Hide forbidden references**: oculta en la ayuda elementos obsoletos o prohibidos.
+
 * **Auto activation delay**: tiempo de espera (en milisegundos) para mostrar sugerencias.
 
   * Recomendado: `0` para que aparezcan al instante.
+
 * **Auto activation triggers for Java**: define los caracteres que activan el autocompletado.
 
   * Por defecto, el punto (`.`).
   * Ejemplo: al escribir `System.` se despliega la lista de miembros (`out`, `err`, `in`, etc.).
+
 * **Auto activation triggers for Javadoc**: por defecto `@`.
 
   * Al escribir `@` en un comentario Javadoc, aparecen etiquetas sugeridas como `@param`, `@return`, `@author`.
@@ -779,7 +781,42 @@ Window → Preferences → Java → Editor → Mark Occurrences
 Por defecto, el color de resaltado es **gris claro**, pero se puede personalizar.
 Facilita enormemente la depuración y comprensión del código.
 
-> 🔹 Muy recomendable mantenerlo activado, salvo en equipos con bajo rendimiento.
+> 💡 *Recomendación*: mantenerlo activado, salvo en equipos con bajo rendimiento.
+
+#### 🔹 Uso manual si está desactivado
+Si la opción **“Mark Occurrences”** está desactivada, Eclipse permite **buscar y resaltar manualmente todas las referencias** a una variable, método o clase:
+
+- **Atajo:**  
+  ```
+  Ctrl + Shift + U
+  ```
+- **Menú contextual:**  
+  ```
+  Click derecho → References → File / Project / Workspace
+  ```
+
+Esto realiza una **búsqueda puntual** (no dinámica) y muestra las referencias tanto **resaltadas en el editor** como **listadas en la vista *Search***, que se abre automáticamente en la parte inferior del entorno.  
+Desde esta vista se pueden **navegar fácilmente por todas las apariciones** localizadas dentro del archivo, el proyecto o el workspace completo.
+
+#### 🔹 Diferencias entre ambos modos
+
+| Modo | Tipo de búsqueda | Actualización | Alcance | Resultado | Ideal para... |
+|------|------------------|----------------|----------|-------------|----------------|
+| **Mark Occurrences** | Automática | Dinámica (al mover el cursor) | Archivo actual | Resalta en el editor | Revisar rápidamente el uso de variables o métodos |
+| **Search References (`Ctrl + Shift + U`)** | Manual | Estática (búsqueda puntual) | Archivo, proyecto o workspace | Resalta y muestra resultados en la vista *Search* | Analizar dependencias o apariciones en todo el proyecto |
+
+#### 🔹 Otros atajos relacionados
+
+| Acción | Atajo | Descripción |
+|--------|--------|-------------|
+| **Buscar referencias en archivo actual** | `Ctrl + Shift + U` | Muestra todas las apariciones del símbolo seleccionado y abre la vista *Search* |
+| **Buscar referencias en el proyecto** | `Ctrl + Alt + G` | Busca la variable o método en todo el proyecto |
+| **Abrir declaración** | `Ctrl + Click` | Salta a la definición de la variable o método |
+| **Mostrar jerarquía de llamadas (Call Hierarchy)** | `Ctrl + Alt + H` | Muestra quién llama a un método y a quién llama ese método |
+
+✅ **Conclusión:**  
+> “Mark Occurrences” es la forma más rápida de resaltar automáticamente las apariciones de un símbolo en el código.  
+> Cuando se necesita un análisis más completo, puede complementarse con la búsqueda manual de referencias (`Ctrl + Shift + U`), que además de resaltar las coincidencias, **abre la vista *Search*** para listar y navegar entre todas las referencias encontradas.
 
 ---
 
