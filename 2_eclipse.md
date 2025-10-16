@@ -836,7 +836,8 @@ Aquí se definen ayudas automáticas mientras escribimos código:
 
 * **Auto insert semicolons and braces**:
   Inserta automáticamente `;` o `{}`.
-  🔸 No se recomienda activar el de `;`, ya que Eclipse no siempre determina su posición correcta.
+  
+> 💡 *Recomendación*:  No se recomienda activar el de `;`, ya que Eclipse no siempre determina su posición correcta.
 
 * **Indentation on Enter**:
   Ajusta automáticamente la sangría al pulsar `Enter`.
@@ -881,6 +882,7 @@ Cada plantilla puede incluir **variables** entre `${}` que se sustituyen según 
 | `${cursor}`         | Posición final del cursor tras insertar la plantilla. |
 
 📘 **Ejemplo explicado:**
+
 Plantilla por defecto `sysout` equivale a:
 
 ```java
@@ -891,7 +893,13 @@ System.out.println(${word_selection}${});${cursor}
 * El cursor queda entre paréntesis para escribir más texto.
 * Al pulsar *Tab*, salta a la posición final.
 
-También se pueden **crear, exportar o importar** plantillas personalizadas para mantener las mismas configuraciones entre equipos.
+📁 **Ruta para gestionar las plantillas:**
+
+```
+Window → Preferences → Java → Editor → Templates
+```
+
+Desde esta ventana se pueden **consultar las plantillas existentes**, **editar las ya creadas**, **importar o exportar plantillas** y **añadir nuevas plantillas personalizadas** que se insertan al escribir su abreviatura y pulsar `Ctrl + Espacio`.
 
 ---
 
