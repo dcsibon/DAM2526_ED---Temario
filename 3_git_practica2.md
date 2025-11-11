@@ -136,17 +136,35 @@ Hi tu_usuario! You've successfully authenticated, but GitHub does not provide sh
 
 Eso significa que la conexión está configurada correctamente.
 
----
-
 ## 8) Configurar tu repositorio local para usar SSH
 
-Si ya tenías tu repositorio configurado con HTTPS, cambia su dirección remota:
+Dependiendo de si **ya tenías el remoto configurado por HTTPS** o **es la primera vez que enlazas tu proyecto con GitHub**, deberás usar un comando distinto:
+
+### 🔹 **CASO A: Ya tenías un remoto HTTPS y quieres cambiarlo a SSH**
 
 ```bash
 git remote set-url origin git@github.com:tu_usuario/nombre_repositorio.git
 ```
 
-Comprueba la nueva URL:
+> ✅ Usa este comando solo si tu repositorio ya estaba conectado con GitHub y quieres dejar de usar HTTPS.
+
+Comprueba que la URL se ha actualizado correctamente:
+
+```bash
+git remote -v
+```
+
+---
+
+### 🔹 **CASO B: Todavía no habías configurado ningún remoto**
+
+Si tu repositorio fue creado localmente (por ejemplo, con `git init`) y aún no está enlazado con GitHub, añade el remoto por primera vez con:
+
+```bash
+git remote add origin git@github.com:tu_usuario/nombre_repositorio.git
+```
+
+Después verifica:
 
 ```bash
 git remote -v
@@ -158,6 +176,13 @@ Deberías ver algo como:
 origin  git@github.com:tu_usuario/nombre_repositorio.git (fetch)
 origin  git@github.com:tu_usuario/nombre_repositorio.git (push)
 ```
+
+---
+
+> 💡 **En resumen:**
+>
+> * Si ya tenías el remoto: usa `set-url`.
+> * Si es la primera vez: usa `add`.
 
 ---
 
@@ -213,3 +238,114 @@ C:\Users\tu_usuario.ssh\id_ed25519
 * [Git – Manual SSH](https://git-scm.com/book/es/v2/Git-en-el-Servidor-Generaci%C3%B3n-de-Tu-Clave-P%C3%BAblica-SSH)
 * [EGit User Guide](https://www.eclipse.org/egit/documentation/)
 * [Comandos de Git más usados](https://training.github.com/downloads/es_ES/github-git-cheat-sheet/)
+
+---
+
+## 14) 🧱 Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)*
+
+### Qué ocurre❓
+
+En algunos centros educativos (como los de la red **Andared**), el **puerto 22**, usado por SSH de forma predeterminada, está **bloqueado por motivos de seguridad**.
+Esto impide clonar o hacer `git push`/`git pull` mediante SSH, mostrando errores como:
+
+```
+ssh: connect to host github.com port 22: Connection timed out
+fatal: Could not read from remote repository.
+```
+
+---
+
+### 💡 Solución: forzar SSH a usar el puerto **443** *(permitido)*
+
+GitHub permite conectarte por SSH usando **el puerto 443**, el mismo que usa HTTPS.
+Solo hay que **crear o editar el archivo de configuración SSH** (`config`) en tu carpeta `.ssh`.
+
+---
+
+### 🔧 Pasos según tu sistema operativo
+
+#### 🔹 macOS o Linux
+
+1. Abre el terminal y escribe:
+
+   ```bash
+   nano ~/.ssh/config
+   ```
+
+2. Añade estas líneas (si no existen):
+
+   ```bash
+   Host github.com
+     Hostname ssh.github.com
+     Port 443
+     User git
+   ```
+
+3. Guarda con `Ctrl + O`, luego `Enter`, y sal con `Ctrl + X`.
+
+4. Prueba la conexión:
+
+   ```bash
+   ssh -T -p 443 git@ssh.github.com
+   ```
+
+   Si ves el mensaje:
+
+   ```
+   Hi tu_usuario! You've successfully authenticated...
+   ```
+
+   ¡Todo está correcto!
+   Ya puedes usar `git push` y `git pull` desde la red del centro.
+
+---
+
+#### 🔹 Windows (Git Bash)
+
+1. Abre **Git Bash** y ejecuta:
+
+   ```bash
+   nano ~/.ssh/config
+   ```
+
+   Si no existe el archivo, se creará.
+
+2. Escribe dentro:
+
+   ```bash
+   Host github.com
+     Hostname ssh.github.com
+     Port 443
+     User git
+   ```
+
+3. Guarda (`Ctrl + O` → `Enter` → `Ctrl + X`).
+
+4. Prueba la conexión:
+
+   ```bash
+   ssh -T -p 443 git@ssh.github.com
+   ```
+
+5. Si te pregunta si confías en el host, responde `yes`.
+
+> ⚙️ En Windows, el archivo `config` se guarda en
+> `C:\Users\<tu_usuario>\.ssh\config`.
+
+---
+
+### 🧠 Qué hace realmente esta configuración
+
+Le indica al cliente SSH de tu equipo que **cada vez que se conecte a `github.com`**,
+use **el servidor alternativo `ssh.github.com`** y **el puerto 443** (que nunca está bloqueado).
+
+A partir de ese momento, puedes seguir usando las mismas URL SSH de siempre:
+
+```bash
+git@github.com:usuario/repositorio.git
+```
+
+Git redirigirá internamente la conexión al puerto correcto.
+
+---
+
