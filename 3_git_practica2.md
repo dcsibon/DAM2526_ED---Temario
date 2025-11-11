@@ -2,6 +2,10 @@
 
 > **Contexto:** En esta práctica aprenderás a configurar una conexión **segura** entre tu ordenador y GitHub usando **SSH**, para evitar introducir usuario y contraseña cada vez que subas o descargues código.
 
+**IMPORTANTE ACTUALIZACIÓN DE LA PRÁCTICA (11/11/2025)**
+
+He agregado un último apartado por si en la clase tenéis problemas al configurar el remoto o al realizar los típicos comandos de sincronización push o pull usando SSH => [14. Problema de conexión SSH en la red Andared (puerto 22 bloqueado)](##problema-de-conexion-ssh-en-la-red-andared-puerto-22-bloqueado)
+
 ---
 
 ## 1) ¿Qué es una clave SSH?
@@ -241,7 +245,7 @@ C:\Users\tu_usuario.ssh\id_ed25519
 
 ---
 
-## 14) 🧱 Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)*
+## Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)*
 
 ### Qué ocurre❓
 
