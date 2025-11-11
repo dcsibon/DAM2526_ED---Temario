@@ -245,7 +245,7 @@ C:\Users\tu_usuario.ssh\id_ed25519
 
 ---
 
-## Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)* <a id="problema-ssh-andared"></a>
+## 14) Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)* <a id="problema-ssh-andared"></a>
 
 ### Qué ocurre❓
 
