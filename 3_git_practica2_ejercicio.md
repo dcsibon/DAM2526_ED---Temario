@@ -22,7 +22,7 @@ Si aparece, tu conexión SSH está lista.
 
 ### 🔹 Paso 2. Crear o localizar el repositorio en GitHub
 
-1. Crea un repositorio vacío llamado `RamasGitJavaDAM`.
+1. Crea un repositorio llamado `RamasGitJavaDAM` que contenga simplemente un fichero README.
 2. Copia la **URL SSH** (empieza por `git@github.com:`).
 
 Ejemplo:
