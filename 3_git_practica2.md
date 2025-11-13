@@ -140,7 +140,7 @@ Hi tu_usuario! You've successfully authenticated, but GitHub does not provide sh
 
 Eso significa que la conexión está configurada correctamente.
 
-## 8) Configurar tu repositorio local para usar SSH
+## 8) Configurar tu repositorio local para usar SSH *(No hacer nada en este punto, solo leer)*
 
 Dependiendo de si **ya tenías el remoto configurado por HTTPS** o **es la primera vez que enlazas tu proyecto con GitHub**, deberás usar un comando distinto:
 
@@ -190,7 +190,7 @@ origin  git@github.com:tu_usuario/nombre_repositorio.git (push)
 
 ---
 
-## 9) Usar Git con SSH
+## 9) Usar Git con SSH *(No hacer nada en este punto, solo leer)*
 
 A partir de ahora, tus comandos de Git funcionarán sin pedir usuario ni contraseña:
 
@@ -206,28 +206,13 @@ Git autenticará automáticamente usando tu clave SSH.
 
 ---
 
-## 10) Uso desde Eclipse (EGit)
-
-1. Abre **Eclipse** → *Window → Preferences → Team → Git → Configuration*.
-2. Verifica que en tu sistema existe la carpeta `.ssh` en tu usuario.
-3. Al hacer *Team → Push to Upstream*, Eclipse detectará tu clave SSH automáticamente si la URL remota del proyecto empieza por `git@github.com:`.
-4. Si no la detecta, revisa en *Window → Preferences → General → Network Connections → SSH2* que el **Private Key** apunta a:
-
-```
-C:\Users\tu_usuario.ssh\id_ed25519
-```
-
-5. Una vez guardado, podrás **push** y **pull** sin autenticación manual.
-
----
-
-## 11) Ejercicio práctico
+## 10) REALIZAR ESTE EJERCICIO PRÁCTICO
 
 [Sigue las siguientes instrucciones para realizar el ejercicio con tu clave SSH](3_git_practica2_ejercicio.md)
 
 ---
 
-## 12) Seguridad y mantenimiento
+## 11) Seguridad y mantenimiento
 
 * Nunca compartas tu **clave privada** (`id_ed25519`).
 * Puedes añadir varias claves SSH si trabajas desde diferentes dispositivos.
@@ -236,7 +221,7 @@ C:\Users\tu_usuario.ssh\id_ed25519
 
 ---
 
-## 13) Recursos útiles
+## 12) Recursos útiles
 
 * [GitHub Docs – Conectar con SSH](https://docs.github.com/es/authentication/connecting-to-github-with-ssh)
 * [Git – Manual SSH](https://git-scm.com/book/es/v2/Git-en-el-Servidor-Generaci%C3%B3n-de-Tu-Clave-P%C3%BAblica-SSH)
@@ -245,7 +230,7 @@ C:\Users\tu_usuario.ssh\id_ed25519
 
 ---
 
-## 14) Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)* <a id="problema-ssh-andared"></a>
+## 13) Problema de conexión SSH en la red **Andared** *(puerto 22 bloqueado)* <a id="problema-ssh-andared"></a>
 
 ### Qué ocurre❓
 
