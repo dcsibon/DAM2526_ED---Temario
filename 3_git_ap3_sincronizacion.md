@@ -124,7 +124,124 @@ git push
 
 ---
 
-## 3.5 Descargar y fusionar cambios (`git pull`)
+## **3.5 Upstream: vinculación entre ramas locales y remotas**
+
+Para que Git pueda sincronizar correctamente una rama, necesita saber **a qué rama remota debe enviar (push)** y **de dónde debe recibir (pull)** los cambios.
+
+A esta relación se le llama **upstream** o **rama de seguimiento (tracking branch)**.
+
+---
+
+### 🔹 ¿Qué es el upstream?
+
+> El *upstream* es la **rama remota asociada** a una rama local.
+> Es el “destino por defecto” de `git push` y la “fuente por defecto” de `git pull`.
+
+Ejemplo típico:
+
+```
+Rama local: main
+Upstream:   origin/main
+```
+
+Esto significa:
+
+* `git push` → sube automáticamente a `origin/main`
+* `git pull` → trae automáticamente de `origin/main`
+
+Sin upstream, Git no sabe dónde sincronizar.
+
+---
+
+### 🔹 ¿Cuándo se crea el upstream?
+
+La primera vez que subes una rama al repositorio remoto.
+
+Por eso el primer push se hace así:
+
+```bash
+git push -u origin nombre_rama
+```
+
+`-u` es exactamente igual que `--set-upstream`.
+
+Esto configura:
+
+```
+nombre_rama (local)  ↔  origin/nombre_rama (remoto)
+```
+
+A partir de aquí, todo es mucho más fácil:
+
+```bash
+git push
+git pull
+```
+
+Git ya recuerda la vinculación.
+
+---
+
+### 🔹 ¿Qué pasa si intento hacer `git push` sin upstream?
+
+Git mostrará:
+
+```
+fatal: The current branch <rama> has no upstream branch.
+```
+
+Y te sugerirá exactamente el comando correcto:
+
+```
+git push --set-upstream origin <rama>
+```
+
+---
+
+### 🔹 Comprobar el upstream actual
+
+```bash
+git status
+```
+
+Si la rama está asociada, verás algo como:
+
+```
+Your branch is up to date with 'origin/main'.
+```
+
+O:
+
+```
+Your branch is ahead of 'origin/factorial_recursivo' by 2 commits.
+```
+
+---
+
+### 🔹 Resumen visual (muy útil para alumnos)
+
+```text
+          (Se crea con: git push -u origin rama)
+┌────────────────┐            ┌──────────────────────────┐
+│   rama local   │  <------>  │   rama remota (GitHub)   │
+│   main         │            │   origin/main            │
+└────────────────┘            └──────────────────────────┘
+```
+
+---
+
+### 🔹 Resumen conceptual
+
+| Concepto                | Explicación                                     |
+| ----------------------- | ----------------------------------------------- |
+| Upstream                | Relación entre una rama local y su rama remota  |
+| `git push -u`           | Crea la rama remota y establece el upstream     |
+| `git push` / `git pull` | Funciona automáticamente después del upstream   |
+| Error típico            | “has no upstream branch” → falta la vinculación |
+
+---
+
+## 3.6 Descargar y fusionar cambios (`git pull`)
 
 El comando `git pull` hace el proceso inverso a `push`:
 **descarga los commits del remoto** y los **fusiona** con tu rama local.
@@ -178,7 +295,7 @@ git push
 
 ---
 
-## 3.6 Descargar sin fusionar (`git fetch`)
+## 3.7 Descargar sin fusionar (`git fetch`)
 
 `git fetch` **solo descarga** los cambios del remoto, pero **no los mezcla aún** con tu rama local.
 Esto permite revisar los cambios antes de integrarlos.
@@ -198,7 +315,7 @@ git merge origin/main
 
 ---
 
-## 3.7 Clonar un repositorio existente (`git clone`)
+## 3.8 Clonar un repositorio existente (`git clone`)
 
 Cuando el proyecto ya está en GitHub y quieres tener una copia local, se utiliza `git clone`.
 
@@ -229,7 +346,7 @@ origin  https://github.com/dcsibon/ejemplo.git (push)
 
 ---
 
-## 3.8 Crear un repositorio en GitHub y vincularlo desde local
+## 3.9 Crear un repositorio en GitHub y vincularlo desde local
 
 Cuando el proyecto se inicia en tu ordenador y quieres subirlo por primera vez:
 
@@ -256,7 +373,7 @@ git pull
 
 ---
 
-## 3.9 Crear una copia de otro proyecto público (`fork`)
+## 3.10 Crear una copia de otro proyecto público (`fork`)
 
 Un **fork** (bifurcación) es una **copia de un repositorio remoto** dentro de tu propia cuenta de GitHub.
 Se usa cuando quieres modificar un proyecto sin afectar al original.
@@ -269,7 +386,7 @@ Se usa cuando quieres modificar un proyecto sin afectar al original.
 
 ---
 
-## 3.10 Comandos esenciales de sincronización
+## 3.11 Comandos esenciales de sincronización
 
 | Comando                           | Descripción                                     | Cuándo se usa                             |
 | --------------------------------- | ----------------------------------------------- | ----------------------------------------- |
@@ -285,7 +402,7 @@ Se usa cuando quieres modificar un proyecto sin afectar al original.
 
 ---
 
-## 3.11 Buenas prácticas de sincronización
+## 3.12 Buenas prácticas de sincronización
 
 * Antes de hacer `push`, realiza siempre un `git pull` para asegurar que trabajas sobre la última versión.
 * Evita hacer `push` directamente sobre ramas que usan otros compañeros: crea ramas secundarias y usa `merge` o `pull request`.
