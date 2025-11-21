@@ -356,7 +356,9 @@ Los commits C y D desaparecen de la historia local.
 main:    A --- B --- C
 feature:       \--- D --- E
 ↓
-main:    A --- B --- C --- D' --- E'
+main:    A --- B --- C
+                     \
+feature:               D' --- E'
 ```
 
 Reubica los commits D y E después de C para mantener una línea continua.
@@ -372,6 +374,7 @@ Reubica los commits D y E después de C para mantener una línea continua.
 
   * ✅ `Añade validación de usuario`
   * ❌ `He añadido la validación del usuario.`
+
 * Evita hacer demasiados commits triviales (“prueba”, “update”); agrupa los cambios significativos.
 * Usa `rebase` solo en ramas personales antes de fusionarlas con `main`.
 
