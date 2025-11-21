@@ -390,3 +390,36 @@ Puedes cerrar la sesión con esta tabla:
 | `git reset --soft B`  | Vuelve a B  | Mantiene cambios de C y D **preparados** | Mantiene cambios de C y D | Deshace commits, pero deja todo listo para re-commit |
 | `git reset --mixed B` | Vuelve a B  | Limpia staging (como en B)               | Mantiene cambios de C y D | Deshace commits, deja cambios sin añadir             |
 | `git reset --hard B`  | Vuelve a B  | Como en B                                | Como en B (borra C y D)   | Deshace commits y borra cambios locales              |
+
+---
+
+## **ENTREGA DE LA PRÁCTICA**
+
+Al finalizar la práctica, debes entregar **únicamente un archivo de texto** con los comandos ejecutados durante la misma.
+
+## ✅ **1. Exporta tu historial de comandos**
+
+En tu terminal (Git Bash, Linux o macOS), ejecuta:
+
+```bash
+history > AAA_practica5.txt
+```
+
+Donde:
+
+* **AAA** son tus **iniciales** en el orden
+  **Primer apellido – Segundo apellido – Nombre**
+  (Ej.: *GGR_practica5.txt* para *García Gómez Roberto*).
+
+Este archivo debe contener **todos los comandos que has utilizado** durante la práctica.
+
+> ⚠️ **IMPORTANTE:**
+> Para asegurarte de que el historial incluye los últimos comandos, **cierra la terminal**, vuelve a abrirla, y entonces ejecuta el comando `history > AAA_practica5.txt`.
+
+---
+
+## ✔️ **Sube el archivo a Moodle**
+
+* `AAA_practica5.txt`
+
+Sin este archivo, la práctica no se considerará entregada.
