@@ -416,6 +416,6 @@ Este archivo debe contener **todos los comandos que has utilizado** durante la p
 
 ## ✔️ **Sube el archivo a Moodle**
 
-* `AAA_practica5.txt`
+* `AAA_practica6.txt`
 
 Sin este archivo, la práctica no se considerará entregada.
