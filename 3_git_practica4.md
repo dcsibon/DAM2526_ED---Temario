@@ -236,9 +236,8 @@ Responde debajo de cada una:
 
 1. ¿Desde qué rama ejecutaste el comando `git rebase main`? ¿Por qué desde esa y no desde `main`?
 2. ¿Por qué se ha producido el conflicto en `notas.txt` al hacer el rebase?
-3. ¿Qué cambios has decidido dejar finalmente en la **línea 2** del archivo?
-4. ¿Qué habría pasado si hubieras borrado una de las versiones sin fijarte bien en el texto?
-5. ¿En qué se diferencia este caso de un conflicto de `merge`? (a nivel práctico, en lo que tú has tenido que hacer).
+3. ¿Qué habría pasado si hubieras borrado una de las versiones sin fijarte bien en el texto?
+4. ¿En qué se diferencia este caso de un conflicto de `merge`? (a nivel práctico, en lo que tú has tenido que hacer).
 
 ---
 
