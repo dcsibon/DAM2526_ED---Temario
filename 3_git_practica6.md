@@ -386,3 +386,36 @@ git revert --continue
   * `git revert --continue`.
 
 ---
+
+---
+
+## **ENTREGA DE LA PRÁCTICA**
+
+Al finalizar la práctica, debes entregar **únicamente un archivo de texto** con los comandos ejecutados durante la misma.
+
+## ✅ **1. Exporta tu historial de comandos**
+
+En tu terminal (Git Bash, Linux o macOS), ejecuta:
+
+```bash
+history > AAA_practica6.txt
+```
+
+Donde:
+
+* **AAA** son tus **iniciales** en el orden
+  **Primer apellido – Segundo apellido – Nombre**
+  (Ej.: *GGR_practica5.txt* para *García Gómez Roberto*).
+
+Este archivo debe contener **todos los comandos que has utilizado** durante la práctica.
+
+> ⚠️ **IMPORTANTE:**
+> Para asegurarte de que el historial incluye los últimos comandos, **cierra la terminal**, vuelve a abrirla, y entonces ejecuta el comando `history > AAA_practica6.txt`.
+
+---
+
+## ✔️ **Sube el archivo a Moodle**
+
+* `AAA_practica5.txt`
+
+Sin este archivo, la práctica no se considerará entregada.
