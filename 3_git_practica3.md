@@ -293,7 +293,7 @@ git pull origin main
 
 ## 10) Entrega
 
-Sube a Classroom:
+Sube a Moodle:
 
 * Captura de Eclipse ejecutando `Main`.
 * Captura de terminal con: `git log --oneline --graph`, un *merge* resuelto, y un *pull* desde GitHub.
