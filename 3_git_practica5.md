@@ -46,8 +46,6 @@ git status
 
 Vamos a simular cuatro versiones consecutivas del fichero.
 
----
-
 ### 🔹 Commit A — “Versión 1”
 
 1. Crea el fichero `pruebas.txt` con este contenido:
@@ -62,8 +60,6 @@ Versión 1
 git add pruebas.txt
 git commit -m "A: Versión 1"
 ```
-
----
 
 ### 🔹 Commit B — “Versión 2”
 
@@ -80,8 +76,6 @@ Confirma:
 git add pruebas.txt
 git commit -m "B: Versión 2"
 ```
-
----
 
 ### 🔹 Commit C — “Versión 3”
 
@@ -100,8 +94,6 @@ git add pruebas.txt
 git commit -m "C: Versión 3"
 ```
 
----
-
 ### 🔹 Commit D — “Versión 4”
 
 Edita `pruebas.txt`:
@@ -119,8 +111,6 @@ Confirma:
 git add pruebas.txt
 git commit -m "D: Versión 4"
 ```
-
----
 
 ### 🔍 Ver historial inicial
 
@@ -152,15 +142,11 @@ git log --oneline
 Localiza el identificador (SHA corto) del commit **B: Versión 2**
 (lo llamaremos aquí `bbbbbbb`, sustituye por el tuyo real).
 
----
-
 ### 2.2. Ejecutar `reset --soft B`
 
 ```bash
 git reset --soft bbbbbbb
 ```
-
----
 
 ### 2.3. Analizar el resultado (HEAD, staging y working directory)
 
@@ -181,8 +167,6 @@ Versión 2
 
 👉 Esto es lo que Git tiene guardado en el **último commit** (B) después del reset.
 
----
-
 #### b) Ver qué contiene el archivo en tu carpeta (working directory)
 
 ```bash
@@ -200,8 +184,6 @@ Versión 4
 
 👉 Aunque el historial ha retrocedido a B, **tu archivo sigue como en la Versión 4**.
 No has perdido el trabajo de C y D.
-
----
 
 #### c) Ver qué hay en el staging (index)
 
@@ -232,8 +214,6 @@ Deberían aparecer las líneas añadidas:
 * El staging contiene los cambios que añadirían “Versión 3” y “Versión 4”.
 * El fichero real ya está en el estado final (como en D).
 
----
-
 ### 2.4. Reconstruir la situación original (volver a D)
 
 Para dejar el repo como al principio (otra vez con D como último commit), puedes:
@@ -259,8 +239,6 @@ cat pruebas.txt
 
 Debes tener otra vez las cuatro versiones y el último commit D.
 
----
-
 ### 3.2. Ejecutar `reset --mixed B`
 
 De nuevo, identifica el SHA de B (`bbbbbbb`) y ejecuta:
@@ -270,8 +248,6 @@ git reset --mixed bbbbbbb
 # o simplemente:
 git reset bbbbbbb
 ```
-
----
 
 ### 3.3. Analizar el resultado
 
@@ -312,8 +288,6 @@ Versión 4
 * Con `--soft`, los cambios de C y D estaban **en staging**.
 * Con `--mixed`, los cambios de C y D están solo **en el área de trabajo** (sin preparar).
 
----
-
 ### 3.4. Reconstruir la situación (volver a D)
 
 ```bash
@@ -322,8 +296,6 @@ git commit -m "C y D: reconstruidos tras reset --mixed"
 ```
 
 Otra vez tu historial tendrá A, B y el nuevo commit con las cuatro líneas.
-
----
 
 ## 4️⃣ Probar `git reset --hard` hacia B
 
@@ -336,15 +308,11 @@ cat pruebas.txt
 git log --oneline
 ```
 
----
-
 ### 4.2. Ejecutar `reset --hard B`
 
 ```bash
 git reset --hard bbbbbbb
 ```
-
----
 
 ### 4.3. Analizar el resultado
 
