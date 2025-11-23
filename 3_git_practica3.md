@@ -72,6 +72,7 @@ Cuando pregunte **Password** → **pega el token** (PAT).
    ```
    git@github.com:tu_usuario/RamasGitJavaDAM.git
    ```
+
 3. Abre terminal en tu *workspace* de Eclipse y clona:
 
    ```bash
@@ -80,18 +81,117 @@ Cuando pregunte **Password** → **pega el token** (PAT).
    cd RamasGitJavaDAM
    ```
 
+### ⚠️ Importante: Clonar repositorios vacíos en GitHub
+
+Cuando se crea un repositorio en GitHub **sin ningún archivo**
+(sin README, sin `.gitignore`, sin licencia…), ese repositorio:
+
+* ✅ existe en GitHub
+* ❌ pero NO contiene ningún commit
+
+Git necesita que exista **al menos un commit inicial** para poder clonar un repositorio.
+
+### ¿Qué ocurre si se intenta clonar un repositorio vacío?
+
+Al ejecutar:
+
+```bash
+git clone git@github.com:tu_usuario/RamasGitJavaDAM.git
+```
+
+Git puede mostrar mensajes como:
+
+```
+fatal: repository 'git@github.com:tu_usuario/RamasGitJavaDAM.git' does not contain any commits
+```
+
+o
+
+```
+warning: You appear to have cloned an empty repository.
+```
+
+Esto significa que GitHub todavía no tiene ninguna versión del proyecto y, por tanto, no puede generar una copia local.
+
+### Formas correctas de trabajar
+
+Existen dos métodos válidos para evitar este problema:
+
+#### ✅ Opción 1: Crear el repositorio en GitHub con README.md (más sencilla)
+
+1. Crear el repositorio en GitHub
+2. Activar la opción **"Add README.md"**
+3. Clonar normalmente:
+
+```bash
+git clone git@github.com:tu_usuario/RamasGitJavaDAM.git
+```
+
+Esta opción funciona porque GitHub ya contiene:
+
+* un primer archivo
+* un commit inicial
+* la rama `main`
+
+#### ✅ Opción 2: Repositorio vacío en GitHub + inicialización en local (más profesional)
+
+Este método es el más similar al flujo de trabajo real en desarrollo:
+primero se crea el proyecto en local y después se sincroniza con GitHub.
+
+1. Crear un repositorio vacío en GitHub
+   *(sin README, sin `.gitignore`, sin licencia)*
+
+2. Crear un **proyecto en Eclipse** dentro del *workspace*
+   Por ejemplo, un proyecto Java llamado `RamasGitJavaDAM` cómo se comenta en el siguiente apartado, a partir del punto 4 [Crear la clase y el código inicial](#crear_clase)
+
+   > Eclipse generará la carpeta del proyecto en tu ordenador
+
+3. Abrir una terminal dentro de la carpeta del proyecto
+
+   Ejemplo en Windows:
+
+   ```bash
+   cd "C:\\Users\\alumno\\eclipse-workspace\\RamasGitJavaDAM"
+   ```
+
+4. Inicializar Git en el proyecto:
+
+   ```bash
+   git init
+   ```
+
+5. Confirmar la primera versión:
+
+   ```bash
+   git add .
+   git commit -m "Commit inicial"
+   ```
+
+6. Vincular el proyecto local con el repositorio remoto de GitHub:
+
+   ```bash
+   git remote add origin git@github.com:tu_usuario/RamasGitJavaDAM.git
+   ```
+
+7. Subir la primera versión:
+
+   ```bash
+   git branch -M main
+   git push -u origin main
+   ```
 ---
 
-## 2) Crear el proyecto **Java** dentro de la carpeta clonada (en Eclipse)
+## 2) Crear el proyecto **Java** dentro de la carpeta clonada *(si optas por la opción 1 importante hacer bien el punto 2)*
 
 1. Eclipse → **File → New → Java Project**.
 2. **Desmarca** *Use default location* y en **Location** elige la carpeta clonada `RamasGitJavaDAM`.
 3. Nombre del proyecto: `RamasGitJavaDAM` → **Finish**.
-4. Crea la clase: *File → New → Class*
+4. Crea la clase: *File → New → Class* <a id="crear_clase"></a>
 
    * Package: `edu.alumno.ramas`
    * Name: `Main`
    * Marca *public static void main(String[] args)*.
+
 5. Código inicial:
 
    ```java
