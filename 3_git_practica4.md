@@ -170,11 +170,19 @@ git rebase main
 ---
 
 3. Git intentará aplicar los commits B y C después de D.
+
    Al aplicar el commit B, detectará que la **línea 2** también se modificó en `main` y mostrará un mensaje de conflicto similar a:
 
 ```text
+Auto-merging notas.txt
 CONFLICT (content): Merge conflict in notas.txt
-error: could not apply <id_commit>...
+error: could not apply 9341b26... B: Modificada la línea 2 con un nuevo texto de estilo
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config advice.mergeConflict false"
+Could not apply 9341b26... B: Modificada la línea 2 con un nuevo texto de estilo
 ```
 
 4. Comprueba el estado:
@@ -197,8 +205,7 @@ Línea 1: Proyecto de prueba con rebase.
 Línea 2: Esta es la versión principal del proyecto en desarrollo.
 =======
 Línea 2: Texto centrado en el estilo y la presentación.
->>>>>>> <id_commit_de_estilo_texto>
-Línea 3: Pendiente revisar posibles mejoras visuales.
+>>>>>>> bbbbbbb (B: Modificada la línea 2 con un nuevo texto de estilo)
 ```
 
 2. Elimina las marcas del conflicto (`<<<<<<<`, `=======`, `>>>>>>>`) y decide **qué versión de la línea 2 se queda**, o combina ambas.
@@ -207,8 +214,7 @@ Por ejemplo, puedes dejar una combinación:
 
 ```text
 Línea 1: Proyecto de prueba con rebase.
-Línea 2: Esta es la versión principal del proyecto en desarrollo, centrada en el estilo y la presentación.
-Línea 3: Pendiente revisar posibles mejoras visuales.
+Línea 2: Texto centrado en el estilo y la presentación.
 ```
 
 3. Guarda el archivo.
