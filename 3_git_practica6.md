@@ -47,8 +47,6 @@ git status
 
 Vamos a crear un archivo de texto y hacer **3 commits** que lo vayan modificando.
 
----
-
 ### 🔹 Commit A — Versión inicial
 
 Crea el fichero `notas.txt` con este contenido:
@@ -65,8 +63,6 @@ git add notas.txt
 git commit -m "A: Versión inicial"
 ```
 
----
-
 ### 🔹 Commit B — Modificar la línea 2
 
 Edita `notas.txt` para que quede:
@@ -82,8 +78,6 @@ Confirma:
 git add notas.txt
 git commit -m "B: Cambiada la línea 2"
 ```
-
----
 
 ### 🔹 Commit C — Añadir una línea nueva
 
@@ -147,6 +141,16 @@ git revert cccccc
 ```
 
 Git abrirá el editor de mensajes de commit (o usará uno por defecto) y creará un nuevo commit que “deshace” C.
+
+> ### 💬 Nota importante sobre `git revert`
+>
+> Cuando ejecutes `git revert`, es normal que se abra una ventana del editor de texto pidiéndote escribir un mensaje de commit.
+>
+> ✅ No es un error
+> ✅ Forma parte del funcionamiento de Git
+>
+> 👉 Si quieres entender **por qué ocurre esto y qué debes hacer exactamente**, consulta:
+> 🔗 [¿Por qué se abre un editor de texto al hacer `git revert`?](3_git_practica6_apertura_editor.md)
 
 ---
 
