@@ -152,8 +152,6 @@ Git abrirá el editor de mensajes de commit (o usará uno por defecto) y creará
 > 👉 Si quieres entender **por qué ocurre esto y qué debes hacer exactamente**, consulta:
 > 🔗 [¿Por qué se abre un editor de texto al hacer `git revert`?](3_git_practica6_apertura_editor.md)
 
----
-
 ### 2.2 Analizar el resultado
 
 #### a) Historial
@@ -173,8 +171,6 @@ Deberías ver algo como:
 
 👉 Fíjate:
 C **sigue existiendo** en el historial, pero ahora hay un commit nuevo (“Revert C”) que deshace sus cambios.
-
----
 
 #### b) Contenido del archivo
 
@@ -217,8 +213,6 @@ En este momento:
 
 * Y el historial contiene A, B, C y el revert de C.
 
----
-
 ### 3.2 Ejecutar `git revert B`
 
 ```bash
@@ -226,8 +220,6 @@ git revert bbbbbb
 ```
 
 Git creará **otro commit nuevo** que deshace los cambios del commit B.
-
----
 
 ### 3.3 Analizar el resultado
 
@@ -252,8 +244,6 @@ Verás algo similar a:
 * Ni B ni C han desaparecido.
 * Simplemente hemos creado commits nuevos que “los deshacen”.
 
----
-
 #### b) Contenido del archivo
 
 ```bash
@@ -271,9 +261,7 @@ Es decir, prácticamente el estado del commit A, **pero A no se ha repetido**, y
 
 ---
 
-## 4️⃣ Comparación con reset (reflexión guiada)
-
-Puedes comentar en clase (o poner como reflexión escrita):
+## 4️⃣ Comparación con reset
 
 1. Con `reset`, movíamos la rama hacia atrás y **podíamos borrar commits de la historia**.
 2. Con `revert`, **no se borra nada**:
@@ -281,25 +269,15 @@ Puedes comentar en clase (o poner como reflexión escrita):
    * La historia se mantiene,
    * solo se añaden commits que deshacen cambios anteriores.
 
-Pregunta tipo:
-
-> ¿Por qué `revert` es más seguro que `reset --hard` cuando ya hemos hecho `push` a GitHub?
-
-Respuesta orientativa:
-
-* Porque `revert` no reescribe la historia, solo añade commits nuevos.
-* Los demás compañeros no pierden su referencia de la historia.
-* Se puede usar después de hacer `push` sin romper el repositorio remoto.
-
 ---
 
-## 5️⃣ (Opcional avanzado) Ver un revert con conflicto
+## 5️⃣ Ver un revert con conflicto
 
-Este bloque es **opcional** y sirve para ver que `revert` también puede generar conflictos.
+Este bloque sirve para ver que `revert` también puede generar conflictos.
 
 ### 5.1 Preparar la situación
 
-Partimos de este estado en el archivo (después de los reverts anteriores):
+Partimos de este estado en el archivo *(después de los reverts anteriores)*:
 
 ```text
 Línea 1: Versión inicial
@@ -322,8 +300,6 @@ git add notas.txt
 git commit -m "D: Cambio nuevo en la línea 2"
 ```
 
----
-
 ### 5.2 Intentar revertir otra vez B
 
 Ahora intenta esto:
@@ -337,32 +313,46 @@ git revert bbbbbb
 Si se produce un conflicto, Git lo indicará:
 
 ```text
+Auto-merging notas.txt
 CONFLICT (content): Merge conflict in notas.txt
+error: could not revert c5499e2... B: Cambiada la línea 2
+hint: After resolving the conflicts, mark them with
+hint: "git add/rm <pathspec>", then run
+hint: "git revert --continue".
+hint: You can instead skip this commit with "git revert --skip".
+hint: To abort and get back to the state before "git revert",
+hint: run "git revert --abort".
+hint: Disable this message with "git config advice.mergeConflict false"
 ```
 
-El archivo contendrá algo como:
+El archivo `notas.txt` contendrá algo como:
 
 ```text
-<<<<<<< HEAD
 Línea 1: Versión inicial
+<<<<<<< HEAD
 Línea 2: Texto cambiado en el commit D
 =======
-Línea 1: Versión inicial
-Línea 2: Texto modificado en B
->>>>>>> bbbbbb B: Cambiada la línea 2
+Línea 2: Texto original
+>>>>>>> parent of bbbbbbb (B: Cambiada la línea 2)
 ```
 
 Tendrás que:
 
-1. Editar el archivo y dejar la versión correcta.
-2. Ejecutar:
+1. Editar el archivo `notas.txt`y dejar la versión correcta.
+
+Por ejemplo, mantener el texto original del commit A:
+
+```
+Línea 1: Versión inicial
+Línea 2: Texto original
+```
+
+3. Ejecutar:
 
 ```bash
 git add notas.txt
 git revert --continue
 ```
-
----
 
 ### 🧠 Mensaje clave
 
@@ -377,10 +367,12 @@ git revert --continue
 
   * **NO borra** el commit indicado.
   * Crea un **nuevo commit** que aplica el “contracambio”.
+
 * Se puede revertir:
 
   * el último commit (HEAD),
   * o uno más antiguo del historial.
+
 * Es seguro usarlo después de hacer `push` a GitHub.
 * Puede generar conflictos si el código ha cambiado mucho desde el commit que queremos revertir.
 * En caso de conflicto:
@@ -391,20 +383,17 @@ git revert --continue
 
 ---
 
----
-
 ## **ENTREGA DE LA PRÁCTICA**
 
 Al finalizar la práctica, debes entregar **únicamente un archivo de texto** con los comandos ejecutados durante la misma.
 
-## ✅ **1. Exporta tu historial de comandos**
+### ✅ **1. Exporta tu historial de comandos**
 
 En tu terminal (Git Bash, Linux o macOS), ejecuta:
 
 ```bash
 history > AAA_practica6.txt
 ```
-
 Donde:
 
 * **AAA** son tus **iniciales** en el orden
@@ -416,10 +405,14 @@ Este archivo debe contener **todos los comandos que has utilizado** durante la p
 > ⚠️ **IMPORTANTE:**
 > Para asegurarte de que el historial incluye los últimos comandos, **cierra la terminal**, vuelve a abrirla, y entonces ejecuta el comando `history > AAA_practica6.txt`.
 
+### ✅ **2. Captura de la historia de commits al finalizar la práctica**
+
+<img width="931" height="204" alt="image" src="https://github.com/user-attachments/assets/470d81eb-19ed-4928-af6b-0a5bf1c6aa23" />
+
 ---
 
-## ✔️ **Sube el archivo a Moodle**
+## ✔️ **Sube los archivos a Moodle**
 
 * `AAA_practica6.txt`
+* captura_final.jpg
 
-Sin este archivo, la práctica no se considerará entregada.
