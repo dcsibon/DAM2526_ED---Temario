@@ -157,6 +157,18 @@ git switch estilo_texto
 git rebase main
 ```
 
+> ### 💬 Nota sobre `git rebase` y commits específicos
+>
+> Aunque normalmente el comando `git rebase` se aplica sobre el último commit de `main`, también es posible indicar **un commit concreto** sobre el que quieres reconstruir tu trabajo.
+>
+> ✅ Esto permite reorganizar una rama apoyándola en una versión anterior del proyecto.
+> ✅ No siempre tienes que rebasar contra el `HEAD` de `main`.
+>
+> 👉 Si quieres entender **cómo funciona exactamente esta opción y cuándo usarla**, consulta:
+> **[Rebase sobre un commit específico](3_git_practica4_opcion_rebase_commit_especifico.md)**
+
+---
+
 3. Git intentará aplicar los commits B y C después de D.
    Al aplicar el commit B, detectará que la **línea 2** también se modificó en `main` y mostrará un mensaje de conflicto similar a:
 
