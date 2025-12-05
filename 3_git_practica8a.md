@@ -1,7 +1,7 @@
 # Práctica 8 - Trabajo en grupo de 4-5 alumnos: Programa con ramas y fusión en Git-GitHub
 
 **Objetivo:**
-Trabajar en equipo usando **ramas de Git**, realizar cambios en paralelo sobre el mismo proyecto y gestionar al final una **fusión con conflicto** que deberá resolver el coordinador del grupo.
+Trabajar en equipo usando **ramas de Git**, realizar cambios en paralelo sobre el mismo proyecto y gestionar las fusiones y un rebase en cada rama.
 
 **Tecnologías:**
 Java (POO), Eclipse, Git, GitHub.
