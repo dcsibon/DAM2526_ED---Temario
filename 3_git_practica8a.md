@@ -1,4 +1,4 @@
-# Práctica 8 - Trabajo en grupo de 4-5 alumnos: Programa con ramas y fusión en Git-GitHub
+# Práctica 8 - Trabajo en grupo de 3-4 alumnos: Programa con ramas y fusión en Git-GitHub
 
 **Objetivo:**
 Trabajar en equipo usando **ramas de Git**, realizar cambios en paralelo sobre el mismo proyecto y gestionar las fusiones y un rebase en cada rama.
@@ -8,7 +8,48 @@ Java (POO), Eclipse, Git, GitHub.
 
 ---
 
-## 1. Organización del grupo, roles y trabajo a realizar.
+## 1. Grupos de trabajo.
+
+### GRUPO 1
+	Rocío
+	Aidan (coord)
+	Alex
+	
+### GRUPO 2
+	Jorge
+	Jhonatan
+	Hugo
+	Daniel Gallardo (coord)
+
+### GRUPO 3
+	Claudia
+	Alejandro
+	Sergio (coord)
+	Daniel Madrid
+	
+### GRUPO 4
+	Ángel
+	Samuel
+	Antonio (coord)
+	
+### GRUPO 5
+	Sara (coord)
+	Oleh
+	Álvaro
+	
+### GRUPO 6
+	Esther (coord)
+	Juanma
+	Cristian
+	
+### GRUPO 7
+	Raquel (coord)
+	Federico
+	Santiago
+
+---
+
+## 2. Organización del grupo, roles y trabajo a realizar.
   
 ### TODO EL EQUIPO: 
 	
@@ -33,6 +74,6 @@ Java (POO), Eclipse, Git, GitHub.
   * Realizar un rebase a la versión 2 (tercer commit) de main.
   * Avisar de que vuestro trabajo ha finalizado y vuestra rama puede ser fusionada.
 
-## 2. Entrega.
+## 3. Entrega.
 
   * Enlace con el repositorio finalizado.
