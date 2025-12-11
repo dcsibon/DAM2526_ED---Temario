@@ -34,6 +34,7 @@ En este tema aprenderemos a trabajar con **Git en local**, **conectarlo con GitH
 | 4  | [**Gestión de ramas**](3_git_ap4_ramas.md)                  | Creación, fusión, conflictos, eliminación y buenas prácticas   |
 | 5  | [**Gestión del historial de commits**](3_git_ap5_commits.md)  | Consulta, revert, reset, checkout y navegación entre versiones |
 | 6  | [**Hojas resumen del tema (chuletas)**](3_git_ap6_resumen.md) | Síntesis de comandos y flujos visuales                         |
+| 7  | [**Trabajo colaborativo con Git + GitHub**](3_git_ap7_trabajo_colaborativo.md) | Conceptos básicos, organización y flujo de trabajo colaborativo |
 
 ---
 
